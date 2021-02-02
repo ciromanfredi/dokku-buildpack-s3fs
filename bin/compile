@@ -71,6 +71,7 @@ if [ ! -f "$build_dir/s3fs/s3_built" ]; then
 	export CFLAGS=-I$build_dir/s3fs/usr/local/include
 	export CXXFLAGS=-I$build_dir/s3fs/usr/local/include
 	export LDFLAGS=-L$build_dir/s3fs/usr/local/lib
+  export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH
 
 	mkdir -pv $build_dir/s3fs
 	#cd /tmp/fuse/fuse-${fuse_version_major}.${fuse_version_minor} && ./configure --disable-kernel-module && make -j 2 && make DESTDIR=$build_dir/s3fs install
