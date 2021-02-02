@@ -40,8 +40,6 @@ export_env_dir() {
 #
 # main
 #
-apt-get install build-essential git libfuse-dev libcurl4-openssl-dev libxml2-dev mime-support automake libtool
-apt-get install pkg-config libssl-dev
 export_env_dir $env_dir
 rm -rvf $build_dir/s3fs/s3_built
 if [ ! -f "$build_dir/s3fs/s3_built" ]; then
