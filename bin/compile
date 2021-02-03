@@ -3,11 +3,12 @@
 #
 # version
 #
-fuse_version=2.9.8
+fuse_version=2.9.9
 s3fs_version=1.78
 
 fuse_archive_filename=fuse-${fuse_version}.tar.gz
-use_download_url=https://github.com/libfuse/libfuse/releases/download/fuse-${fuse_version}/fuse-${fuse_version}.tar.gz
+use_download_url=https://src.fedoraproject.org/repo/pkgs/fuse/fuse-${fuse_version}.tar.gz/sha512/3d82fafd04f2924299bb09d2bb144935fa004a43fb9a6568e2e1cc5a60fded2efa1711029a0d7f12b3e6e4501f7217f2ee3545646d89da8dece083cb390f23e2/fuse-${fuse_version}.tar.gz
+#use_download_url=https://github.com/libfuse/libfuse/releases/download/fuse-${fuse_version}/fuse-${fuse_version}.tar.gz
 
 s3fs_archive_filename=s3fs-fuse-${s3fs_version}.tar.gz
 s3fs_download_url=https://codeload.github.com/s3fs-fuse/s3fs-fuse/tar.gz/v${s3fs_version}
