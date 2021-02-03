@@ -3,12 +3,11 @@
 #
 # version
 #
-#fuse_version_major=2
-#fuse_version_minor=9.4
+fuse_version=2.9.8
 s3fs_version=1.78
 
-#fuse_archive_filename=fuse-${fuse_version_major}.${fuse_version_minor}.tar.gz
-#fuse_download_url=http://skylineservers.dl.sourceforge.net/project/fuse/fuse-${fuse_version_major}.X/${fuse_version_major}.${fuse_version_minor}/${fuse_archive_filename}
+fuse_archive_filename=fuse-${fuse_version}.tar.gz
+use_download_url=https://github.com/libfuse/libfuse/releases/download/fuse-${fuse_version}/fuse-${fuse_version}.tar.gz
 
 s3fs_archive_filename=s3fs-fuse-${s3fs_version}.tar.gz
 s3fs_download_url=https://codeload.github.com/s3fs-fuse/s3fs-fuse/tar.gz/v${s3fs_version}
@@ -47,10 +46,10 @@ if [ ! -f "$build_dir/s3fs/s3_built" ]; then
 	#
 	# download
 	#
-	#rm -rf /tmp/fuse/
-	#mkdir -p /tmp/fuse/
-	#curl -s ${fuse_download_url} -o /tmp/fuse/${fuse_archive_filename}
-	#tar -xvf /tmp/fuse/${fuse_archive_filename} -C /tmp/fuse
+	rm -rf /tmp/fuse/
+	mkdir -p /tmp/fuse/
+	curl -s ${fuse_download_url} -o /tmp/fuse/${fuse_archive_filename}
+	tar -xvf /tmp/fuse/${fuse_archive_filename} -C /tmp/fuse
 
 	rm -rf /tmp/s3fs/
 	mkdir -p /tmp/s3fs/
@@ -75,7 +74,7 @@ if [ ! -f "$build_dir/s3fs/s3_built" ]; then
   export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig/
 
 	mkdir -pv $build_dir/s3fs
-	#cd /tmp/fuse/fuse-${fuse_version_major}.${fuse_version_minor} && ./configure --disable-kernel-module && make -j 2 && make DESTDIR=$build_dir/s3fs install
+	cd /tmp/fuse/fuse-${fuse_version} && ./configure --disable-kernel-module && make -j 2 && make DESTDIR=$build_dir/s3fs install
 	cd /tmp/s3fs/s3fs-fuse-${s3fs_version} && ./autogen.sh && ./configure  && make -j 2 && make DESTDIR=$build_dir/s3fs install
 
 	touch $build_dir/s3fs/s3_built
